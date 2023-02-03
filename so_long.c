@@ -6,49 +6,90 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:01:44 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/02 14:24:56 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/03 15:56:01 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// int ac, char *av[]
-int	main()
+int	heightt(char *path)
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	void	*img2;
-	void	*img3;
+	int		height;
+	char	*line;
+	int		fd;
+
+	height = 0;
+	fd = open(path, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		height++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (height);
+}
+
+void	*floor_imgg(void *mlx)
+{
 	void	*floor_img;
 	int		img_width;
 	int		img_height;
+
+	floor_img = mlx_xpm_file_to_image(mlx, "images/floor.xpm", &img_width, &img_height);
+	return (floor_img);
+}
+
+void	fill_floor(void *mlx, void *win, int fd)
+{
+	void	*floor_img;
+	char	*line;
+	int		x;
+	int		y;
+	int		i;
+
+	line = get_next_line(fd);
+	printf("why\n");
+	printf("@@@@%s\n", line);
+	floor_img = floor_imgg(mlx);
+	x = 0;
+	y = 0;
+	while (line)
+	{
+		i = 0;
+		while (line[i])
+		{
+			printf(">>>>>>>>>>>>>>>>>>>>>%d\n", i);
+			if (line[i] == '0')
+			{
+				x += 100;
+				mlx_put_image_to_window(mlx, win, floor_img, x, y);
+			}
+			i++;
+		}
+		// free(line);
+		line = get_next_line(fd);
+		y += 100;
+	}
+	// free(line);
+}
+
+int	main(int ac, char *av[])
+{
+	void	*mlx;
+	void	*win;
+	int		fd;
 	int		x;
 	int		y;
 
-	x = 0;
 	y = 0;
+	fd = open(av[ac - 1], O_RDONLY);
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1200, 720, "Window");
-	img = mlx_xpm_file_to_image(mlx, "images/R_L.xpm", &img_width, &img_height);
-	img2 = mlx_xpm_file_to_image(mlx, "images/R_R.xpm", &img_width, &img_height);
-	img3 = mlx_xpm_file_to_image(mlx, "images/g_h.xpm", &img_width, &img_height);
-	floor_img = mlx_xpm_file_to_image(mlx, "images/floor.xpm", &img_width, &img_height);
-	while (y < 720)
-	{
-		while (x < 1201)
-		{
-			mlx_put_image_to_window(mlx, win, floor_img, x, y);
-			x += 120;
-		}
-		x = 0;
-		y += 80;
-	}
-	// 120 120 120 120 *10
-	//floor w 120 ;h 15
-	mlx_put_image_to_window(mlx, win, img, 0, 5);
-	mlx_put_image_to_window(mlx, win, img2, 60, 5);
-	mlx_put_image_to_window(mlx, win, img3, 120, 0);
+	x = ft_strlen(get_next_line(fd)) * 100 - 100;
+	y = heightt(av[ac - 1]) * 100;
+	win = mlx_new_window(mlx, x, y, "Window");
+	// fd = open(av[ac - 1], O_RDONLY);
+	fill_floor(mlx, win, fd);
 	mlx_loop(mlx);
 	return (0);
 }
