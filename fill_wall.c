@@ -1,45 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   fill_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 15:26:12 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/04 18:21:49 by aoudija          ###   ########.fr       */
+/*   Created: 2023/02/04 19:09:01 by aoudija           #+#    #+#             */
+/*   Updated: 2023/02/04 19:45:47 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	ft_strlen(const char *str)
+void	*wall_img(void *mlx)
 {
-	size_t	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*get_next_line(int fd)
-{
-	char	*line;
-	int		len;
+	void	*wall_img;
 	int		i;
 
-	i = -1;
-	line = malloc(10000);
-	while (line[i++] != '\n')
+	i = 50;
+	wall_img = mlx_xpm_file_to_image(mlx, "images/wall.xpm", &i, &i);
+	return (wall_img);
+}
+
+void	fill_wall(void *mlx, void *win, int fd)
+{
+	char	*line;
+	int		x;
+	int		y;
+	int		i;
+
+	line = get_next_line(fd);
+	y = 0;
+	while (line)
 	{
-		len = read(fd, &line[i], 1);
-		if (i > 0 && len == 0)
-			return (line);
-		if (len <= 0)
-			return (free(line), NULL);
+		i = -1;
+		while (line[++i])
+		{
+			x = i * 100;
+			if (line[i] == '1')
+				mlx_put_image_to_window(mlx, win, wall_img(mlx), x, y);
+		}
+		free(line);
+		line = get_next_line(fd);
+		y += 100;
 	}
-	line[i] = 0;
-	return (line);
+	free(line);
 }

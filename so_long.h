@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 12:47:31 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/02 17:26:18 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/04 20:53:12 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	*ft_strjoin(char *s1, char *s2);
+int		heightt(char *path);
+void	fill_floor(void *mlx, void *win, int fd);
+void	fill_wall(void *mlx, void *win, int fd);
+void	fill_RICK(void *mlx, void *win, int fd);
+
 
 #endif
