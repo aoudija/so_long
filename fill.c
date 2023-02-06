@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:18:00 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/05 17:14:56 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:32:57 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	heightt(char *path)
 	return (height);
 }
 
-void fill(t_data m_w, char *map, char c, void *img_ptr)
+void	fill(t_data data, char c, void *img_ptr)
 {
 	int		x;
 	int		y;
@@ -41,14 +41,14 @@ void fill(t_data m_w, char *map, char c, void *img_ptr)
 	i = -1;
 	j = 1;
 	x = 0;
-	while (map[++i])
+	while (data.map[++i])
 	{
-		if (map[i] == c)
+		if (data.map[i] == c)
 		{
 			x = (j - 1) * 100;
-			mlx_put_image_to_window(m_w.mlx, m_w.win, img_ptr, x, y);
+			mlx_put_image_to_window(data.mlx, data.win, img_ptr, x, y);
 		}
-		if (map[i] == '\n')
+		if (data.map[i] == '\n')
 		{
 			y += 100;
 			j = 0;

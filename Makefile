@@ -6,7 +6,7 @@
 #    By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 14:02:18 by aoudija           #+#    #+#              #
-#    Updated: 2023/02/05 16:53:56 by aoudija          ###   ########.fr        #
+#    Updated: 2023/02/06 14:52:00 by aoudija          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,14 @@ NAME = so_long
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 mlx_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 DEPS = so_long.h
 
-FILES = so_long.c get_next_line.c fill.c ft_utils.c img_ptr.c \
+FILES = so_long.c get_next_line.c fill.c ft_utils.c img_ptr.c player_down.c\
+		player_up.c  key_press.c player_left.c player_right.c\
 
 # FILES_B = checker.c checker_fts.c rules_1.c rules_2.c rules_3.c ft_putsr.c libft_tools.c libft_tools2.c\
 # 		  ft_split.c ft_strtrim.c check_errors.c get_next_line.c ft_tools_1.c ft_tools_2.c \

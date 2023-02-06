@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:20:23 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/05 17:01:00 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:33:17 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	*pickle_img(void *mlx)
 	r_r = mlx_xpm_file_to_image(mlx, "images/Pickle_Rick.xpm", &i, &i);
 	return (r_r);
 }
-
 
 void	*floor_img(void *mlx)
 {
