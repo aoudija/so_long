@@ -1,6 +1,6 @@
 /* XPM */
 static char *RICK1675542830[] = {
-/* columns rows colors chars-per-pixel */
+/* columns rows 0xFF0000s chars-per-pixel */
 "100 100 256 2 ",
 "   c #030304",
 ".  c #0A0402",

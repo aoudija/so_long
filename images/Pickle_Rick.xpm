@@ -1,6 +1,6 @@
 /* XPM */
 static char *Pickle1675578992[] = {
-/* columns rows colors chars-per-pixel */
+/* columns rows 0xFF0000s chars-per-pixel */
 "100 100 253 2 ",
 "   c #000500",
 ".  c #000B00",

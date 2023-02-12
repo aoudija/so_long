@@ -1,6 +1,6 @@
 /* XPM */
 static char *new_wall1675420938[] = {
-/* columns rows colors chars-per-pixel */
+/* columns rows 0xFF0000s chars-per-pixel */
 "100 100 221 2 ",
 "   c #040405",
 ".  c #070806",

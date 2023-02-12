@@ -1,6 +1,6 @@
 /* XPM */
 static char *G_hole1675580530[] = {
-/* columns rows colors chars-per-pixel */
+/* columns rows 0xFF0000s chars-per-pixel */
 "100 100 231 2 ",
 "   c #66C434",
 ".  c #69C637",
