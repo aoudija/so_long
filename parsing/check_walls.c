@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 12:42:19 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/12 16:34:19 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:26:02 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int	normi(char *line)
 	while (j < (int)ft_strlen(line) - 1)
 	{
 		if (line[j] != '1')
+		{
+			write(1, "Erorr\n", 6);
+			write(1, "walls err\n", 10);
 			return (0);
+		}
 		j++;
 	}
 	return (1);
@@ -35,7 +39,11 @@ int	norma(char *line)
 	{
 		if (line[0] != '1'
 			|| line[ft_strlen(line) - 2] != '1')
+		{
+			write(1, "Erorr\n", 6);
+			write(1, "walls err\n", 10);
 			return (0);
+		}
 	}
 	return (1);
 }

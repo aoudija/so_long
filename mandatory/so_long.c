@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:01:44 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/12 20:09:09 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:39:04 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,17 @@ static int	is_brr(char *path)
 	i = -1;
 	len = (int)ft_strlen(path);
 	if (len < 5)
+	{
+		write(1, "Erorr\n.ber err\n", 15);
 		return (0);
+	}
 	len--;
 	if (path[len] != 'r' || path[len - 1] != 'e'
 		|| path[len - 2] != 'b' || path[len - 3] != '.')
+	{
+		write(1, "Erorr\n.ber err\n", 15);
 		return (0);
+	}
 	return (1);
 }
 
@@ -86,12 +92,7 @@ int	main(int ac, char *av[])
 		data.win = mlx_new_window(data.mlx, ft_strlen(line) * 100 - 100,
 				heightt(av[ac - 1]) * 100, "Window");
 		free(line);
-		close(fd);
-		data.floor = floor_img(data.mlx);
-		data.wall = wall_img(data.mlx);
-		data.pickle = pickle_img(data.mlx);
-		data.exit = hole_img(data.mlx);
-		data.rick = rick_img(data.mlx);
+		filler(&data);
 		mapping(data);
 		mlx_hook(data.win, 2, 0, key_press, &data);
 		mlx_hook(data.win, 17, 0, on_close, NULL);

@@ -6,11 +6,19 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:38:07 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/12 14:17:53 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/13 12:11:08 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	put_c(char *map, int i)
+{
+	if (map[i - 1] == 'P')
+		exit(0);
+	map[i] = '0';
+	map[i - 1] = 'M';
+}
 
 static char	*put_m_o(char *map)
 {
@@ -19,18 +27,20 @@ static char	*put_m_o(char *map)
 	i = -1;
 	while (map[++i])
 	{
-		if (map[i] == 'M' && map[i + 1] == '0')
+		if (map[i] == 'M' && (map[i + 1] == '0' || map[i + 1] == 'P'))
 		{
+			if (map[i + 1] == 'P')
+				exit(0);
 			map[i] = '0';
 			map[i + 1] = 'M';
 			i++;
 		}
-		else if (map[i] == 'M' && map[i - 1] == '0' && map[i + 1] != '0')
+		else if (map[i] == 'M' && (map[i - 1] == '0' || map[i - 1] == 'P')
+			&& map[i + 1] != '0')
 		{
-			while (map[i - 1] == '0')
+			while (map[i - 1] == '0' || map[i - 1] == 'P')
 			{
-				map[i] = '0';
-				map[i - 1] = 'M';
+				put_c(map, i);
 				i--;
 			}
 			i++;

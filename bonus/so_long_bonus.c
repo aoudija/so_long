@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:06:11 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/12 20:30:20 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:21:18 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,12 @@ static int	is_brr(char *path)
 	len--;
 	if (path[len] != 'r' || path[len - 1] != 'e'
 		|| path[len - 2] != 'b' || path[len - 3] != '.')
+	{
+		write(1, "Erorr\n", 6);
+		write(1, ".ber\n", 5);
 		return (0);
+	}
 	return (1);
-}
-
-void leaks()
-{
-	system("leaks so_bonus");
 }
 
 static int	error(char *path)
@@ -77,7 +76,6 @@ static int	error(char *path)
 
 int	main(int ac, char *av[])
 {
-	atexit(leaks);
 	t_data	data;
 	int		fd;
 	char	*line;
@@ -85,11 +83,8 @@ int	main(int ac, char *av[])
 	if (ac == 2)
 	{
 		if (!error(av[ac - 1]))
-		{
-			write(1, "Error!\n", 7);
 			return (0);
-		}
-		data.map =  put_map(av[ac - 1]);
+		data.map = put_map(av[ac - 1]);
 		fd = open(av[ac - 1], O_RDONLY);
 		line = get_next_line(fd);
 		data.mlx = mlx_init();
@@ -97,7 +92,6 @@ int	main(int ac, char *av[])
 		data.win = mlx_new_window(data.mlx, ft_strlen(line) * 100 - 100,
 				heightt(av[ac - 1]) * 100, "Window");
 		free(line);
-		close(fd);
 		mapping_bonus(data);
 		mlx_hook(data.win, 2, 0, key_press_bonus, &data);
 		mlx_hook(data.win, 17, 0, on_close, NULL);

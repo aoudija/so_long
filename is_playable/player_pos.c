@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 13:26:55 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/12 13:46:37 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/13 11:00:08 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	player_i(char **s)
 				return (i);
 		}
 	}
-	// ft_free(s);
 	return (-1);
 }
 
@@ -46,6 +45,5 @@ int	player_j(char **s)
 				return (j);
 		}
 	}
-	// ft_free(s);
 	return (-1);
 }

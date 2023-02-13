@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:20:23 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/12 19:06:05 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/13 10:59:31 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	*wall_img(void *mlx)
 
 	i = 50;
 	wall_img = mlx_xpm_file_to_image(mlx, "images/wall.xpm", &i, &i);
-	return (wall_img); 
+	return (wall_img);
 }
 
 void	*rick_img(void *mlx)

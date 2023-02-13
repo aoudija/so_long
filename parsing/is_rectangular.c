@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 12:14:48 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/12 16:34:34 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:22:32 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	optim(int width, char *path, int h)
 		if (h == 1)
 		{
 			if ((int)ft_strlen(line) != width - 1)
-				return (0);
+				return (free(line), 0);
 		}
 		else if ((int)ft_strlen(line) != width)
-			return (0);
+			return (free(line), 0);
 		free(line);
 		line = get_next_line(fd);
 		h--;
@@ -49,9 +49,11 @@ int	is_rectangular(char *path)
 	free(line);
 	close(fd);
 	width = (int)ft_strlen(line);
-	if (!optim(width, path, h))
+	if (!optim(width, path, h) || (heightt(path) == width - 1))
+	{
+		write(1, "Erorr\n", 6);
+		write(1, "shape err\n", 10);
 		return (0);
-	if (heightt(path) == width - 1)
-		return (0);
+	}
 	return (1);
 }

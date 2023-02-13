@@ -6,7 +6,7 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 11:36:07 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/12 17:31:20 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:21:34 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int	check_bitems(char *map)
 			e++;
 	}
 	if (!is_item(map) || p == 0 || p > 1 || e == 0 || e > 1 || c < 1)
+	{
+		write(1, "Erorr\n", 6);
+		write(1, "items err\n", 10);
 		return (0);
-	free(map);
-	return (1);
+	}
+	return (free(map), 1);
 }

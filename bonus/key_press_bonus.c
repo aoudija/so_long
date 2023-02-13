@@ -6,13 +6,13 @@
 /*   By: aoudija <aoudija@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:55:28 by aoudija           #+#    #+#             */
-/*   Updated: 2023/02/12 20:40:27 by aoudija          ###   ########.fr       */
+/*   Updated: 2023/02/13 11:34:01 by aoudija          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void draw_moves(t_data *data, int keycode, int *count)
+void	draw_moves(t_data *data, int keycode, int *count)
 {
 	if (keycode == 0)
 	{
